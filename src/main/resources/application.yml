@@ -1,0 +1,12 @@
+path:
+  quiz:
+    csv: /en_Quiz.csv
+
+user:
+  locale: ru RU
+
+spring:
+  banner:
+    image:
+      width: 76
+      height: 76

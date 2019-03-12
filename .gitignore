@@ -30,3 +30,5 @@
 .mvn
 mvnw
 *.cmd
+pointcut.txt
+.DS_Store
