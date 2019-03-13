@@ -1,16 +1,14 @@
 package com.oneso.quiz.service;
 
+import com.oneso.quiz.config.PathQuizProperties;
 import com.oneso.quiz.dao.QuestionDao;
 import com.oneso.quiz.domain.Questions;
-import com.oneso.quiz.logger.MyLogger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.Scanner;
 
-@MyLogger
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
@@ -18,17 +16,17 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final LocalizationService localizationService;
 
-    @Value("${path.quiz.csv}")
-    private String pathToCSV;
+    private final PathQuizProperties prop;
 
     @Autowired
-    public QuestionServiceImpl(QuestionDao qDao, LocalizationService localizationService) {
+    public QuestionServiceImpl(QuestionDao qDao, LocalizationService localizationService, PathQuizProperties prop) {
         this.qDao = qDao;
         this.localizationService = localizationService;
+        this.prop = prop;
     }
 
     public Questions getQuestions() {
-        return qDao.parsQuestionCSV(pathToCSV);
+        return qDao.parsQuestionCSV(prop.getCsv());
     }
 
     public void start(Questions questions) {

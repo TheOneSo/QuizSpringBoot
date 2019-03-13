@@ -1,5 +1,7 @@
 package com.oneso.quiz.service;
 
+import com.oneso.quiz.config.PathQuizProperties;
+import com.oneso.quiz.config.YamlProperties;
 import com.oneso.quiz.dao.QuestionDao;
 import com.oneso.quiz.domain.Questions;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,15 +19,20 @@ class QuestionServiceTest {
     private QuestionDao questionDao;
     @Mock
     private LocalizationService localizationService;
+    @Mock
+    private PathQuizProperties prop;
 
     private QuestionService service;
 
     @BeforeEach
     void setUp() {
         questionDao = mock(QuestionDao.class);
+        prop = mock(PathQuizProperties.class);
         when(questionDao.parsQuestionCSV(isNull())).thenReturn(new Questions("1", "2"));
         when(questionDao.parsQuestionCSV(anyString())).thenReturn(new Questions("1", "2"));
-        service = new QuestionServiceImpl(questionDao, localizationService);
+        when(prop.getCsv()).thenReturn("test");
+
+        service = new QuestionServiceImpl(questionDao, localizationService, prop);
     }
 
     @Test

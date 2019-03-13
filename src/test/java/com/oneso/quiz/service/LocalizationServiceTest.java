@@ -1,5 +1,6 @@
 package com.oneso.quiz.service;
 
+import com.oneso.quiz.config.UserProperties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,19 +19,24 @@ class LocalizationServiceTest {
     @Mock
     private MessageSource messageSource;
 
+    @Mock
+    private UserProperties prop;
+
     private LocalizationServiceImpl service;
 
     @BeforeEach
     void setUp() {
         messageSource = mock(MessageSource.class);
+        prop = mock(UserProperties.class);
         when(messageSource.getMessage(anyString(), any(Object[].class), any(Locale.class))).thenReturn("test");
         when(messageSource.getMessage(anyString(), isNull(), any(Locale.class))).thenReturn("test");
+        when(prop.getLocale()).thenReturn("en US");
     }
 
     @Test
     @DisplayName("корректно создается")
     void shouldCorrectCreator() {
-        service = new LocalizationServiceImpl(messageSource);
+        service = new LocalizationServiceImpl(messageSource, prop);
 
         assertNotNull(service);
     }
@@ -38,7 +44,7 @@ class LocalizationServiceTest {
     @Test
     @DisplayName("меняет язык")
     void shouldSwitchLanguage() {
-        service = new LocalizationServiceImpl(messageSource);
+        service = new LocalizationServiceImpl(messageSource, prop);
         service.setLocale("ru", "RU");
 
         assertEquals("ru", service.getLanguage());
@@ -51,7 +57,7 @@ class LocalizationServiceTest {
     @Test
     @DisplayName("возвращает отформатированное сообщение")
     void shouldReturnFormattedMessage() {
-        service = new LocalizationServiceImpl(messageSource);
+        service = new LocalizationServiceImpl(messageSource, prop);
 
         service.setLocale("ru", "RU");
 
@@ -62,7 +68,7 @@ class LocalizationServiceTest {
     @Test
     @DisplayName("вызывает методы getMessage с нужными параметрами")
     void shouldExecuteMethodsGetMessage() {
-        service = new LocalizationServiceImpl(messageSource);
+        service = new LocalizationServiceImpl(messageSource, prop);
         service.setLocale("en", "US");
         service.getMessage("test");
         verify(messageSource, times(1)).getMessage("test", null, Locale.US);

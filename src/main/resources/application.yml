@@ -1,6 +1,5 @@
 path:
-  quiz:
-    csv: /en_Quiz.csv
+  csv: /en_Quiz.csv
 
 user:
   locale: ru RU
@@ -10,3 +9,5 @@ spring:
     image:
       width: 76
       height: 76
+
+message: Hello Quiz

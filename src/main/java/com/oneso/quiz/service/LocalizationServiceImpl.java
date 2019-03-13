@@ -1,8 +1,8 @@
 package com.oneso.quiz.service;
 
+import com.oneso.quiz.config.UserProperties;
 import com.oneso.quiz.logger.MyLogger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,15 @@ public class LocalizationServiceImpl implements LocalizationService {
 
     private final MessageSource messageSource;
 
-    @Value("${user.locale}")
+    private final UserProperties prop;
+
     private Locale locale;
 
     @Autowired
-    public LocalizationServiceImpl(MessageSource messageSource) {
+    public LocalizationServiceImpl(MessageSource messageSource, UserProperties prop) {
         this.messageSource = messageSource;
+        this.prop = prop;
+        this.locale = new Locale(prop.getLocale());
     }
 
     @Override
