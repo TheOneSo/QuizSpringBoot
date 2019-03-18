@@ -1,0 +1,6 @@
+${Ansi.GREEN}   ,-----.             ,--.
+${Ansi.GREEN}  '  .-.  '   ,--.,--. `--' ,-----.
+${Ansi.GREEN}  |  | |  |   |  ||  | ,--. `-.  /
+${Ansi.GREEN}  '  '-'  '-. '  ''  ' |  |  /  `-.
+${Ansi.GREEN}   `-----'--'  `----'  `--' `-----'
+${Ansi.RED} :: Spring Boot${spring-boot.formatted-version} :: ${Ansi.DEFAULT}
