@@ -32,3 +32,4 @@ mvnw
 *.cmd
 pointcut.txt
 .DS_Store
+spring-shell.log

@@ -22,7 +22,8 @@ public class PersonDaoSimple implements PersonDao {
     }
 
     public Person newPerson(String firstName, String lastName) {
-        personList.add(new Person(firstName, lastName));
-        return new Person(firstName, lastName);
+        Person temp = new Person(firstName, lastName);
+        personList.add(temp);
+        return temp;
     }
 }

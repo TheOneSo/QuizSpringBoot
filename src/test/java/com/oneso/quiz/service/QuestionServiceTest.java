@@ -1,7 +1,6 @@
 package com.oneso.quiz.service;
 
 import com.oneso.quiz.config.PathQuizProperties;
-import com.oneso.quiz.config.YamlProperties;
 import com.oneso.quiz.dao.QuestionDao;
 import com.oneso.quiz.domain.Questions;
 import org.junit.jupiter.api.BeforeEach;

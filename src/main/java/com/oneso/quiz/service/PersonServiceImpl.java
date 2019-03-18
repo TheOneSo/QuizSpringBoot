@@ -34,4 +34,8 @@ public class PersonServiceImpl implements PersonService {
 
         return pDao.newPerson(firstName, lastName);
     }
+
+    public Person newPerson(String firstName, String lastName) {
+        return pDao.newPerson(firstName, lastName);
+    }
 }
