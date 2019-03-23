@@ -1,0 +1,10 @@
+spring:
+  shell:
+    interactive:
+      enabled: false
+
+path:
+  csv: test
+
+user:
+  locale: ru RU
